@@ -22,18 +22,6 @@ def Response(querry: str) -> str:
     return response
 
 
-def generate_titles() -> list[str]:
-    querry = f"generate me a technical ideas for an articles, Answer only with format of python array: example: [article1, article2], do not split it into multiple arrays and do not greet"
-    titles = Response(querry)
-    print(type(titles), titles)
-
-    # AI not reliable
-    if type(titles) != type([]):
-        raise TypeError("Wrong type of data")
-
-    return titles
-
-
 # Multi providers
 def generate_articles(list_of_articles: list[str]) -> dict:
     articles = dict()
@@ -94,8 +82,8 @@ if __name__ == "__main__":
         title_querry = f"generate me {number_of_articles} trending technical ideas for an articles, Answer only with format of python array: example: [article1, article2], do not split it into multiple arrays and do not greet"
         
         chatbot = Chatbot(config={
-            "email": "email",
-            "password": "your password"
+            "email": email,
+            "password": password
         })
         for data in chatbot.ask(title_querry):
             response = data["message"]
